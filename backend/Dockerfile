@@ -1,25 +1,24 @@
-# backend/Dockerfile
+FROM node:18-alpine AS base
 
-# Utilise une image de Node.js comme base
-FROM node:18-alpine
-
-# Définir le répertoire de travail
 WORKDIR /app
 
-# Copier le fichier package.json et package-lock.json
 COPY package*.json ./
 
-# Installer les dépendances
 RUN npm install
 
-# Copier tout le code source
 COPY . .
 
-# Construire l'application Nest.js
+FROM base AS build
 RUN npm run build
 
-# Exposer le port
+# Production
+FROM node:18-alpine AS production
+WORKDIR /app
+COPY --from=build /app ./
 EXPOSE 3001
-
-# Démarrer l'application
 CMD ["npm", "run", "start:prod"]
+
+# Development
+FROM base AS development
+EXPOSE 3001
+CMD ["npm", "run", "start:dev"]

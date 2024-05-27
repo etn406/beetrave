@@ -1,10 +1,10 @@
-version: '3.9'
+name: beetrave
 
 services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      target: production
     ports:
       - "3000:3000"
     depends_on:
@@ -13,7 +13,7 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      target: production
     ports:
       - "3001:3001"
     depends_on:
@@ -24,13 +24,13 @@ services:
       DATABASE_USER: postgres
       DATABASE_PASSWORD: example
       DATABASE_NAME: mydatabase
-    depends_on:
-      db:
-        condition: service_healthy
+    volumes:
+      - type: bind
+        source: ./library.db
+        target: /app/beets-library.db
 
   db:
     image: postgres:13
-    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
@@ -39,11 +39,6 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready"]
-      interval: 1s
-      timeout: 5s
-      retries: 10
 
 volumes:
   postgres_data:
