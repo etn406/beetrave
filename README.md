@@ -27,6 +27,7 @@ services:
     command: npm run dev
     environment:
       NODE_ENV: development
+      BEETRAVE_API_URL: http://localhost:3001/api
 
   backend:
     build:
@@ -61,6 +62,9 @@ touch docker-compose.prod.yml
 ```yml
 services:
   frontend:
+    environment:
+      NODE_ENV: production
+      BEETRAVE_API_URL: https://<production.website>/api
     build:
       target: production
 
