@@ -1,24 +1,32 @@
 FROM node:18-alpine AS base
 
-WORKDIR /app
+RUN mkdir -p /packages-cache
+RUN mkdir -p /frontend
 
-COPY package*.json ./
+WORKDIR /packages-cache
+
+COPY package.json .
+COPY package-lock.json .
 
 RUN npm install
-
-COPY . .
 
 FROM base AS build
 RUN npm run build
 
 # Production
 FROM node:18-alpine AS production
-WORKDIR /app
-COPY --from=build /app ./
+
+WORKDIR /frontend
+
+COPY --from=build /frontend .
+
 EXPOSE 3000
+
 CMD ["npm", "start"]
 
 # Development
 FROM base AS development
+
 EXPOSE 3000
+
 CMD ["npm", "run", "dev"]

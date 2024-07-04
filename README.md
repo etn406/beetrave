@@ -1,8 +1,37 @@
-# beets-rave
+# Beetrave
+
+Main goals of this application:
+
+1. **Navigate through a full [beets](https://beets.readthedocs.io) library stored on a server.**
+   Here the _Beetrave_ [NestJS](https://nestjs.com/) back-end will take advantage of _beets_ by reading its SQLite library file, and serve a simple API to the [NextJS](https://nextjs.org/) front-end.
+
+2. **Select albums or individual tracks and have them automatically synchronized on an other device.** For that, we'll need [Syncthing](https://syncthing.net/) installed on the server and sharing the beets library folder, and Beetrave will edit a `.stignore` file to select individual tracks to share with other devices.
+
+## To-Do List
+
+- [x] Configure the application for it to run in Docker containers (backend, frontend, db)
+
+- [x] Connect to the beet's library database
+
+- [x] Display some data from beet's library on the frontend
+
+- [ ] Create a paginated table on the frontend with tracks, grouped by albums, and with a few columns
+
+- [ ] Read Syncthing `.stignore`
+
+- [ ] Make items selectable for synchronisation on the frontend item table
+
+- [ ] Add a _Save_ button on the item table to send changes to the backend
+
+- [ ] Write Syncthing `.stignore` with selected tracks
+
+- [ ] Verify that the configuration works well in production
+
+- [ ] Make tracks playable simply on the frontend (no playlist)
 
 ## Installation
 
-* Clone the repository:
+- Clone the repository:
 
 ```sh
 git clone https://github.com/etn406/beets-rave.git
@@ -27,6 +56,7 @@ services:
     command: npm run dev
     environment:
       NODE_ENV: development
+      BEETRAVE_FRONT_PORT: 3000
       BEETRAVE_API_URL: http://localhost:3001/api
 
   backend:
@@ -39,6 +69,8 @@ services:
         target: /app/beets-library.db
     environment:
       NODE_ENV: development
+      BEET_LIBRARY_ROOT: /path/to/beet-library
+      BEET_LIBRARY_DB: /path/to/library.db
 ```
 
 Build and run the project:
@@ -49,7 +81,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```
 
 Building again shouldn't be necessary after this,
-unless you modified one of the `package.json` or `Dockerfile`.
+unless you modified `package.json` or `Dockerfile`.
 
 ### Production
 
@@ -71,7 +103,11 @@ services:
   backend:
     build:
       target: production
+    environment:
+      BEET_LIBRARY_ROOT: /path/to/beet-library
+      BEET_LIBRARY_DB: /path/to/library.db
 ```
+
 ```sh
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
 ```
