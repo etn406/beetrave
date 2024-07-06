@@ -15,7 +15,7 @@ Main goals of this application:
 
 - [x] Display some data from beet's library on the frontend
 
-- [ ] Create a paginated table on the frontend with tracks, grouped by albums, and with a few columns
+- [ ] Create a paginated table on the frontend with tracks, grouped by albums
 
 - [ ] Read Syncthing `.stignore`
 

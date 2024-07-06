@@ -1,6 +1,6 @@
-import { BeetItemFE } from "./beet-item.interface";
+import { TrackFE } from "./track.interface";
 
-export interface BeetAlbumFE {
+export interface AlbumFE {
   id: number;
   added: string;
   albumartist: string;
@@ -11,5 +11,5 @@ export interface BeetAlbumFE {
   albumdisambig: string;
   original_year: number;
   style: string;
-  items: BeetItemFE[];
+  tracks: TrackFE[];
 }

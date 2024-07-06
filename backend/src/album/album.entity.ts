@@ -1,120 +1,116 @@
-  import { DataTypes } from 'sequelize';
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
-  @Table({
-  tableName: 'albums',
-  timestamps: false
-  })
-  export class BeetAlbum extends Model {
-  @PrimaryKey
-  @Column
+@Entity('albums')
+export class Album {
+
+  @PrimaryColumn()
   id?: number;
 
-  @Column({ type: DataTypes.BLOB })
+  @Column({ type: 'blob' })
   artpath?: Buffer;
 
-  @Column
+  @Column()
   added?: string;
 
-  @Column
+  @Column()
   albumartist?: string;
 
-  @Column
+  @Column()
   albumartist_sort?: string;
 
-  @Column
+  @Column()
   albumartist_credit?: string;
 
-  @Column
+  @Column()
   album?: string;
 
-  @Column
+  @Column()
   genre?: string;
 
-  @Column
+  @Column()
   year?: number;
 
-  @Column
+  @Column()
   month?: number;
 
-  @Column
+  @Column()
   day?: number;
 
-  @Column
+  @Column()
   disctotal?: number;
 
-  @Column
+  @Column()
   comp?: number;
 
-  @Column
+  @Column()
   mb_albumid?: string;
 
-  @Column
+  @Column()
   mb_albumartistid?: string;
 
-  @Column
+  @Column()
   albumtype?: string;
 
-  @Column
+  @Column()
   label?: string;
 
-  @Column
+  @Column()
   mb_releasegroupid?: string;
 
-  @Column
+  @Column()
   asin?: string;
 
-  @Column
+  @Column()
   catalognum?: string;
 
-  @Column
+  @Column()
   script?: string;
 
-  @Column
+  @Column()
   language?: string;
 
-  @Column
+  @Column()
   country?: string;
 
-  @Column
+  @Column()
   albumstatus?: string;
 
-  @Column
+  @Column()
   albumdisambig?: string;
 
-  @Column
+  @Column()
   releasegroupdisambig?: string;
 
-  @Column
+  @Column()
   rg_album_gain?: string;
 
-  @Column
+  @Column()
   rg_album_peak?: string;
 
-  @Column
+  @Column()
   r128_album_gain?: number;
 
-  @Column
+  @Column()
   original_year?: number;
 
-  @Column
+  @Column()
   original_month?: number;
 
-  @Column
+  @Column()
   original_day?: number;
 
-  @Column
+  @Column()
   style?: string;
 
-  @Column
+  @Column()
   discogs_albumid?: number;
 
-  @Column
+  @Column()
   discogs_artistid?: number;
 
-  @Column
+  @Column()
   discogs_labelid?: number;
 
-  @Column
+  @Column()
   albumtypes?: string;
 }

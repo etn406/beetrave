@@ -1,4 +1,4 @@
-export interface BeetItemFE {
+export interface TrackFE {
   id: number;
   year: number;
   track: number;

@@ -1,240 +1,235 @@
-import { DataTypes } from 'sequelize';
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Table({
-    tableName: 'items',
-    timestamps: false
-})
-export class BeetItem extends Model {
-    @Column({ type: DataTypes.BLOB })
-    path?: Buffer;
+@Entity('items')
+export class Track {
+    @Column({ type: 'blob' })
+    path?: Buffer | string;
 
-    @PrimaryKey
-    @Column
+    @PrimaryColumn()
     id?: number;
 
-    @Column
+    @Column()
     album_id?: number;
 
-    @Column
+    @Column()
     year?: number;
 
-    @Column
+    @Column()
     month?: number;
 
-    @Column
+    @Column()
     day?: number;
 
-    @Column
+    @Column()
     track?: number;
 
-    @Column
+    @Column()
     tracktotal?: number;
 
-    @Column
+    @Column()
     disc?: number;
 
-    @Column
+    @Column()
     disctotal?: number;
 
-    @Column
+    @Column()
     bpm?: number;
 
-    @Column
+    @Column()
     comp?: number;
 
-    @Column
+    @Column()
     r128_track_gain?: number;
 
-    @Column
+    @Column()
     r128_album_gain?: number;
 
-    @Column
+    @Column()
     original_year?: number;
 
-    @Column
+    @Column()
     original_month?: number;
 
-    @Column
+    @Column()
     original_day?: number;
 
-    @Column
+    @Column()
     bitrate?: number;
 
-    @Column
+    @Column()
     samplerate?: number;
 
-    @Column
+    @Column()
     bitdepth?: number;
 
-    @Column
+    @Column()
     channels?: number;
 
-    @Column
+    @Column()
     discogs_albumid?: number;
 
-    @Column
+    @Column()
     discogs_artistid?: number;
 
-    @Column
+    @Column()
     discogs_labelid?: number;
 
-    @Column({ type: DataTypes.FLOAT.UNSIGNED })
+    @Column({ type: 'real' })
     rg_track_gain?: number;
 
-    @Column({ type: DataTypes.FLOAT.UNSIGNED })
+    @Column({ type: 'real' })
     rg_track_peak?: number;
 
-    @Column({ type: DataTypes.FLOAT.UNSIGNED })
+    @Column({ type: 'real' })
     rg_album_gain?: number;
 
-    @Column({ type: DataTypes.FLOAT.UNSIGNED })
+    @Column({ type: 'real' })
     rg_album_peak?: number;
 
-    @Column({ type: DataTypes.FLOAT.UNSIGNED })
+    @Column({ type: 'real' })
     length?: number;
 
-    @Column({ type: DataTypes.FLOAT.UNSIGNED })
+    @Column({ type: 'real' })
     mtime?: number;
 
-    @Column({ type: DataTypes.FLOAT.UNSIGNED })
+    @Column({ type: 'real' })
     added?: number;
 
-    @Column
+    @Column()
     title?: string;
 
-    @Column
+    @Column()
     artist?: string;
 
-    @Column
+    @Column()
     artist_sort?: string;
 
-    @Column
+    @Column()
     artist_credit?: string;
 
-    @Column
+    @Column()
     album?: string;
 
-    @Column
+    @Column()
     albumartist?: string;
 
-    @Column
+    @Column()
     albumartist_sort?: string;
 
-    @Column
+    @Column()
     albumartist_credit?: string;
 
-    @Column
+    @Column()
     genre?: string;
 
-    @Column
+    @Column()
     lyricist?: string;
 
-    @Column
+    @Column()
     composer?: string;
 
-    @Column
+    @Column()
     composer_sort?: string;
 
-    @Column
+    @Column()
     arranger?: string;
 
-    @Column
+    @Column()
     grouping?: string;
 
-    @Column
+    @Column()
     lyrics?: string;
 
-    @Column
+    @Column()
     comments?: string;
 
-    @Column
+    @Column()
     mb_trackid?: string;
 
-    @Column
+    @Column()
     mb_albumid?: string;
 
-    @Column
+    @Column()
     mb_artistid?: string;
 
-    @Column
+    @Column()
     mb_albumartistid?: string;
 
-    @Column
+    @Column()
     mb_releasetrackid?: string;
 
-    @Column
+    @Column()
     albumtype?: string;
 
-    @Column
+    @Column()
     label?: string;
 
-    @Column
+    @Column()
     acoustid_fingerprint?: string;
 
-    @Column
+    @Column()
     acoustid_id?: string;
 
-    @Column
+    @Column()
     mb_releasegroupid?: string;
 
-    @Column
+    @Column()
     asin?: string;
 
-    @Column
+    @Column()
     catalognum?: string;
 
-    @Column
+    @Column()
     script?: string;
 
-    @Column
+    @Column()
     language?: string;
 
-    @Column
+    @Column()
     country?: string;
 
-    @Column
+    @Column()
     albumstatus?: string;
 
-    @Column
+    @Column()
     media?: string;
 
-    @Column
+    @Column()
     albumdisambig?: string;
 
-    @Column
+    @Column()
     releasegroupdisambig?: string;
 
-    @Column
+    @Column()
     disctitle?: string;
 
-    @Column
+    @Column()
     encoder?: string;
 
-    @Column
+    @Column()
     initial_key?: string;
 
-    @Column
+    @Column()
     format?: string;
 
-    @Column
+    @Column()
     style?: string;
 
-    @Column
+    @Column()
     work?: string;
 
-    @Column
+    @Column()
     mb_workid?: string;
 
-    @Column
+    @Column()
     work_disambig?: string;
 
-    @Column
+    @Column()
     trackdisambig?: string;
 
-    @Column
+    @Column()
     albumtypes?: string;
 
-    @Column
+    @Column()
     isrc?: string;
 }

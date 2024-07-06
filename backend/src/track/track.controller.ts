@@ -1,9 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { BeetItemService } from './beet-item.service';
+import { TrackService } from './track.service';
 
 @Controller('item')
 export class BeetItemController {
-  constructor(private readonly beetItemService: BeetItemService) { }
+  constructor(private readonly beetItemService: TrackService) { }
 
   @Get('/list')
   findAll(page = 1, pageSize = 10) {
