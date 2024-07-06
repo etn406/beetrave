@@ -1,5 +1,7 @@
 FROM node:18-alpine AS base
 
+RUN apk add rsync
+
 RUN mkdir -p /packages-cache
 RUN mkdir -p /backend
 
