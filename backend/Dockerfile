@@ -1,6 +1,6 @@
 FROM node:18-alpine AS base
 
-RUN apk add rsync
+RUN apk add rsync sqlite postgresql
 
 RUN mkdir -p /packages-cache
 RUN mkdir -p /backend
