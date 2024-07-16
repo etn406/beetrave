@@ -1,16 +1,17 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { IItem } from "../item/item.interface.js";
 
-@Entity('albums')
-export class Album {
+@Entity('beets_album')
+export class Album extends BaseEntity {
 
   @PrimaryColumn()
-  id?: number;
+  id!: number;
 
-  @Column({ type: 'blob' })
-  artpath?: Buffer;
+  @Column({ nullable: true })
+  artpath?: string;
 
-  @Column()
-  added?: string;
+  @Column({ type: 'real' })
+  added?: number;
 
   @Column()
   albumartist?: string;
@@ -22,7 +23,7 @@ export class Album {
   albumartist_credit?: string;
 
   @Column()
-  album?: string;
+  name?: string;
 
   @Column()
   genre?: string;
@@ -81,13 +82,13 @@ export class Album {
   @Column()
   releasegroupdisambig?: string;
 
-  @Column()
+  @Column({ type: 'real', nullable: true })
   rg_album_gain?: string;
 
-  @Column()
+  @Column({ type: 'real', nullable: true })
   rg_album_peak?: string;
 
-  @Column()
+  @Column({ type: 'real', nullable: true })
   r128_album_gain?: number;
 
   @Column()
@@ -99,18 +100,24 @@ export class Album {
   @Column()
   original_day?: number;
 
-  @Column()
+  @Column({ nullable: true })
   style?: string;
 
-  @Column()
+  @Column({ nullable: true })
   discogs_albumid?: number;
 
-  @Column()
+  @Column({ nullable: true })
   discogs_artistid?: number;
 
-  @Column()
+  @Column({ nullable: true })
   discogs_labelid?: number;
 
-  @Column()
-  albumtypes?: string;
+  @Column("simple-array", { nullable: true })
+  albumtypes?: string[];
+
+  @OneToMany('BItem', (item: IItem) => item.album)
+  items?: IItem[];
+
+  @Column({ default: false })
+  deleted?: boolean;
 }

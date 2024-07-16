@@ -1,0 +1,42 @@
+import { IItem } from "../item/item.interface.js";
+
+export interface IAlbum {
+  id: number;
+  artpath?: string;
+  added?: number;
+  albumartist?: string;
+  albumartist_sort?: string;
+  albumartist_credit?: string;
+  name?: string;
+  genre?: string;
+  year?: number;
+  month?: number;
+  day?: number;
+  disctotal?: number;
+  comp?: number;
+  mb_albumid?: string;
+  mb_albumartistid?: string;
+  albumtype?: string;
+  label?: string;
+  mb_releasegroupid?: string;
+  asin?: string;
+  catalognum?: string;
+  script?: string;
+  language?: string;
+  country?: string;
+  albumstatus?: string;
+  albumdisambig?: string;
+  releasegroupdisambig?: string;
+  rg_album_gain?: string;
+  rg_album_peak?: string;
+  r128_album_gain?: number;
+  original_year?: number;
+  original_month?: number;
+  original_day?: number;
+  style?: string;
+  discogs_albumid?: number;
+  discogs_artistid?: number;
+  discogs_labelid?: number;
+  albumtypes?: string[];
+  items: IItem[];
+}
