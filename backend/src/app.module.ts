@@ -5,7 +5,7 @@ import { AlbumModule } from './album/album.module.js';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { BeetsImporterModule } from './beets-importer/beets-importer.module.js';
-import { dataSourceOptionsFactory } from './database/database.providers.js';
+import { dataSourceOptionsFactory } from './database/data-source-options-factory.js';
 import { ItemModule } from './item/item.module.js';
 import { PlaylistModule } from './playlist/playlist.module.js';
 import { SyncthingModule } from './syncthing/syncthing.module.js';

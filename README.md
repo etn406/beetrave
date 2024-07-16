@@ -123,8 +123,15 @@ services:
     build:
       target: production
     environment:
+      NODE_ENV: development
       BEET_LIBRARY_ROOT: /path/to/beet-library
       BEET_LIBRARY_DB: /path/to/library.db
+      POSTGRES_DATABASE_HOST: db
+      POSTGRES_DATABASE_PORT: 5433
+      POSTGRES_DATABASE_USER: beetrave
+      POSTGRES_DATABASE_PASSWORD: beetrave
+      POSTGRES_DATABASE_NAME: beetrave
+      BACKEND_PORT: 3001
 ```
 
 ```sh
