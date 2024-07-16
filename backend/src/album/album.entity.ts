@@ -115,7 +115,7 @@ export class Album extends BaseEntity {
   @Column("simple-array", { nullable: true })
   albumtypes?: string[];
 
-  @OneToMany('BItem', (item: IItem) => item.album)
+  @OneToMany('Item', (item: IItem) => item.album)
   items?: IItem[];
 
   @Column({ default: false })

@@ -234,7 +234,7 @@ export class Item extends BaseEntity {
   @Column({ nullable: true })
   isrc?: string;
 
-  @ManyToOne('BAlbum', (album: IAlbum) => album.items)
+  @ManyToOne('Album', (album: IAlbum) => album.items)
   @JoinColumn({
     name: 'album_id',
   })
