@@ -18,23 +18,19 @@ services:
       - "3001:3001"
     depends_on:
       - db
-    environment:
-      DATABASE_HOST: db
-      DATABASE_PORT: 16661
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: example
-      DATABASE_NAME: mydatabase
 
   db:
     image: postgres:13
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: example
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: beetrave
+      POSTGRES_PASSWORD: beetrave
+      POSTGRES_DB: beetrave
+      POSTGRES_PORT: 
     ports:
-      - "16661:16661"
+      - "5433:5433"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    command: -p 5433
 
 volumes:
   postgres_data:
