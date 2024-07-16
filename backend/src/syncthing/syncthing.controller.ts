@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { SyncthingService } from './syncthing.service';
+import { SyncthingService } from './syncthing.service.js';
 
 @Controller('syncthing')
 export class SyncthingController {
@@ -9,6 +9,5 @@ export class SyncthingController {
 
   @Get('list')
   list() {
-    return this.syncthingService.readSyncthingFile()
   }
 }

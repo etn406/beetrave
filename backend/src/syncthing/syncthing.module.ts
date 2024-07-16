@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { TrackModule } from 'src/track/track.module';
-import { SyncthingController } from './syncthing.controller';
-import { SyncthingService } from './syncthing.service';
+import { ItemModule } from '../item/item.module.js';
+import { TypedConfigModule } from '../typed-config/typed-config.module.js';
+import { SyncthingController } from './syncthing.controller.js';
+import { SyncthingService } from './syncthing.service.js';
 
 @Module({
+  imports: [ItemModule, TypedConfigModule],
   providers: [SyncthingService],
   controllers: [SyncthingController],
-  imports: [TrackModule]
 })
 export class SyncthingModule { }
