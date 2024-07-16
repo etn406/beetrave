@@ -83,6 +83,25 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 Building again shouldn't be necessary after this,
 unless you modified `package.json` or `Dockerfile`.
 
+#### Migrations
+
+```sh
+# First, build the project
+docker-compose exec backend npm run build
+```
+
+```sh
+# Creates an empty migration
+docker-compose exec backend npm migration:create --name=MyNewMigration
+
+# Generates a new migration reflecting the difference between the database and the Entities definitions
+docker-compose exec backend npm migration:generate --name=MyNewMigration
+
+# Run/revert migrations
+docker-compose exec backend npm migration:run
+docker-compose exec backend npm migration:revert
+```
+
 ### Production
 
 Create a file named `docker-compose.prod.yml` file to override basic settings :
