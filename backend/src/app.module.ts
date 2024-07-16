@@ -15,7 +15,6 @@ import { TypedConfigModule } from './typed-config/typed-config.module.js';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
       validationSchema: configValidationSchema
     }),
     TypeOrmModule.forRootAsync({
