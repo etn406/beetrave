@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryColumn } from 'typeorm';
-import { IAlbum } from '../album/album.interface.js';
-import { IPlaylist } from '../playlist/playlist.interfaces.js';
+import type { Album } from '../album/album.entity.js';
+import type { Playlist } from '../playlist/playlist.entity.js';
 
 @Entity('beets_item')
 export class Item extends BaseEntity {
@@ -235,14 +235,14 @@ export class Item extends BaseEntity {
   @Column({ nullable: true })
   isrc?: string;
 
-  @ManyToOne('Album', (album: IAlbum) => album.items, { nullable: true })
+  @ManyToOne('Album', (album: Album) => album.items, { nullable: true })
   @JoinColumn({
     name: 'album_id',
   })
-  album?: IAlbum;
+  album?: Album;
 
-  @ManyToMany('Playlist', (playlist: IPlaylist) => playlist.items, { nullable: true })
-  playlists?: IPlaylist[];
+  @ManyToMany('Playlist', (playlist: Playlist) => playlist.items, { nullable: true })
+  playlists?: Playlist[];
 
   @Column({ nullable: true, default: false })
   deleted?: boolean;

@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
-import { IItem } from "../item/item.interface.js";
+import type { Item } from "../item/item.entity.js";
 
 @Entity('beets_album')
 export class Album extends BaseEntity {
@@ -115,8 +115,8 @@ export class Album extends BaseEntity {
   @Column({ nullable: true })
   albumtypes?: string;
 
-  @OneToMany('Item', (item: IItem) => item.album, { nullable: true })
-  items?: IItem[];
+  @OneToMany('Item', (item: Item) => item.album, { nullable: true })
+  items?: Item[];
 
   @Column({ nullable: true, default: false })
   deleted?: boolean;
