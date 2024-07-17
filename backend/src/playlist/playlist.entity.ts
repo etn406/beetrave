@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import type { Item } from "../item/item.entity.js";
 import { PlaylistType } from "./playlist.interfaces.js";
 
@@ -20,5 +20,6 @@ export class Playlist extends BaseEntity {
   type?: PlaylistType;
 
   @ManyToMany('Item', (item: Item) => item.playlists)
+  @JoinTable()
   items?: Item[];
 }
