@@ -1,4 +1,5 @@
 import { IAlbum } from "../album/album.interface.js";
+import { IPlaylist } from "../playlist/playlist.interfaces.js";
 
 export interface IItem {
   path?: string;
@@ -79,4 +80,6 @@ export interface IItem {
   albumtypes?: string;
   isrc?: string;
   album?: IAlbum;
+  playlists?: IPlaylist;
+  deleted?: boolean;
 }
