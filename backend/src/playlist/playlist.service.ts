@@ -11,6 +11,6 @@ export class PlaylistService {
   ) { }
 
   async getSyncthingPlaylist(): Promise<Playlist> {
-    return this.playlistRepository.findOneOrFail({ where: { type: PlaylistType.Syncthing } })
+    return this.playlistRepository.findOneOrFail({ where: { type: PlaylistType.Syncthing } });
   }
 }
