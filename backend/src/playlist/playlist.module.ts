@@ -8,6 +8,6 @@ import { PlaylistService } from './playlist.service.js';
 @Module({
   imports: [TypeOrmModule.forFeature([Playlist]), TypedConfigModule],
   providers: [PlaylistService],
-  controllers: [PlaylistController]
+  controllers: [PlaylistController],
 })
 export class PlaylistModule { }

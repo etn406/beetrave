@@ -26,7 +26,7 @@ export class BeetsImporterService {
       `.mode csv`,
       `.output "${csvFile}"`,
       `SELECT ${inputColumns} FROM ${fromTable};`,
-      `.exit`
+      `.exit`,
     ].join('\n');
   }
 
@@ -91,7 +91,7 @@ export class BeetsImporterService {
       Object.assign(
         { PGPASSWORD: this.appConfig.POSTGRES_DATABASE_PASSWORD },
         process.env
-      )
+      ),
     ];
   }
 
@@ -159,7 +159,7 @@ export class BeetsImporterService {
       index++;
     }
 
-    return `${readableSize.toFixed(2)} ${units[index]}`;
+    return `${readableSize.toFixed(2)} ${units[index]}`;
   }
 
   private async deleteFile(filePath: string): Promise<void> {

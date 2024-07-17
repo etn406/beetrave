@@ -9,6 +9,6 @@ import { ItemService } from './item.service.js';
   imports: [TypeOrmModule.forFeature([Item]), TypedConfigModule],
   controllers: [ItemController],
   providers: [ItemService],
-  exports: [ItemService]
+  exports: [ItemService],
 })
 export class ItemModule { }

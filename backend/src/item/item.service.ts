@@ -6,8 +6,8 @@ import { Item } from './item.entity.js';
 @Injectable()
 export class ItemService {
   constructor(
-    @InjectRepository(Item) private readonly itemRepository: Repository<Item>,
-  ) { }
+    @InjectRepository(Item) private readonly itemRepository: Repository<Item>
+  ) {}
 
   findAll(page: number, pageSize = 50) {
     return this.itemRepository.find({

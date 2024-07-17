@@ -7,7 +7,7 @@ enum Script {
   ImportBeets = 'import-beets',
 }
 
-export async function runScript(scriptName: string, args: unknown[]): Promise<void> {
+export async function runScript(scriptName: string, _args: unknown[]): Promise<void> {
   const script = Object.values(Script).find(s => s === scriptName);
 
   if (!script) {

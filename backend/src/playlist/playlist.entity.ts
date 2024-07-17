@@ -15,7 +15,7 @@ export class Playlist extends BaseEntity {
     nullable: false,
     type: "enum",
     enum: PlaylistType,
-    default: PlaylistType.Items
+    default: PlaylistType.Items,
   })
   type?: PlaylistType;
 

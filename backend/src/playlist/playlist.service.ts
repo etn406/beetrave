@@ -16,9 +16,9 @@ export class PlaylistService {
         id: true,
         name: true,
         items: {
-          id: true
-        }
-      }
+          id: true,
+        },
+      },
     });
   }
 
@@ -28,9 +28,9 @@ export class PlaylistService {
         id: true,
         name: true,
         items: {
-          id: true
-        }
-      }
+          id: true,
+        },
+      },
     });
   }
 

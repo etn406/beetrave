@@ -42,7 +42,7 @@ export const importerConfig: Record<'albums' | 'items', BeetsImporterTableConfig
       discogs_artistid: "discogs_artistid",
       discogs_labelid: "discogs_labelid",
       albumtypes: "albumtypes",
-    }
+    },
   },
   items: {
     fromTable: 'items',
@@ -125,6 +125,6 @@ export const importerConfig: Record<'albums' | 'items', BeetsImporterTableConfig
       trackdisambig: "trackdisambig",
       albumtypes: "albumtypes",
       isrc: "isrc",
-    }
-  }
+    },
+  },
 };

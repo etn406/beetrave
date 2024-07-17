@@ -17,8 +17,8 @@ export class AlbumService {
       skip: page * pageSize,
       take: pageSize,
       order: {
-        added: 'DESC'
-      }
+        added: 'DESC',
+      },
     }));
 
     return albums;
