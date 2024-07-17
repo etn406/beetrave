@@ -55,6 +55,10 @@ export class InitAlbums1721176463209 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`
+            ALTER TABLE "beets_item"
+            DROP CONSTRAINT "FK_0a34857b13cdb302956c304a7ee"
+        `);
+        await queryRunner.query(`
             DROP TABLE "beets_album"
         `);
     }
