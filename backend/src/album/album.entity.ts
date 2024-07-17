@@ -112,12 +112,12 @@ export class Album extends BaseEntity {
   @Column({ nullable: true })
   discogs_labelid?: number;
 
-  @Column("simple-array", { nullable: true })
-  albumtypes?: string[];
+  @Column({ nullable: true })
+  albumtypes?: string;
 
-  @OneToMany('Item', (item: IItem) => item.album)
+  @OneToMany('Item', (item: IItem) => item.album, { nullable: true })
   items?: IItem[];
 
-  @Column({ default: false })
+  @Column({ nullable: true, default: false })
   deleted?: boolean;
 }
