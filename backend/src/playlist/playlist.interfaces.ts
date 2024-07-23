@@ -9,6 +9,6 @@ export interface PutPlaylist {
   name: string;
 }
 
-export const PutPlaylistSchema = Joi.object<PutPlaylist>({
+export const PutPlaylistSchema: Joi.ObjectSchema<PutPlaylist> = Joi.object<PutPlaylist>({
   name: Joi.string().max(128),
 })

@@ -12,7 +12,7 @@ export function RespectJoiSchema(schema: Joi.Schema, validationOptions?: Validat
       validator: {
         validate(value: unknown, args: ValidationArguments) {
           const joiSchema = args.constraints[0];
-          const result = joiSchema.validate(value).error;
+          const result = joiSchema.validate(value);
 
           if (result.error) {
             console.error(`Validation error: ${result.error}`);
