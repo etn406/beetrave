@@ -1,21 +1,12 @@
 name: beetrave
 
 services:
-  frontend:
+  app:
     build:
-      context: ./frontend
+      context: ./app
       target: production
     ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-
-  backend:
-    build:
-      context: ./backend
-      target: production
-    ports:
-      - "3001:3001"
+      - "5173:5173"
     depends_on:
       - db
 

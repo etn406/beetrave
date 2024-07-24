@@ -3,17 +3,16 @@
 Main goals of this application:
 
 1. **Navigate through a full [beets](https://beets.readthedocs.io) library stored on a server.**
-   Here the _Beetrave_ [NestJS](https://nestjs.com/) back-end will take advantage of _beets_ by reading its SQLite library file, and serve a simple API to the [NextJS](https://nextjs.org/) front-end.
 
-2. **Select albums or individual tracks and have them automatically synchronized on an other device.** For that, we'll need [Syncthing](https://syncthing.net/) installed on the server and sharing the beets library folder, and Beetrave will edit a `.stignore` file to select individual tracks to share with other devices.
+2. **Select albums or individual tracks and have them automatically synchronized on an other device.**
 
 ## To-Do List
 
-- [x] Configure the application for it to run in Docker containers (backend, frontend, db)
+- [x] Configure the application for it to run in Docker containers (app, db)
 
-- [x] Connect to the beet's library database
+- [ ] Connect to the beet's library database
 
-- [x] Display some data from beet's library on the frontend
+- [ ] Display some data from beet's library on the frontend
 
 - [ ] Create a paginated table on the frontend with tracks, grouped by albums
 
@@ -38,7 +37,7 @@ git clone https://github.com/etn406/beets-rave.git
 cd beets-rave
 ```
 
-### Development
+### Development (deprecated, to update)
 
 Create a file named `docker-compose.dev.yml` file to override basic settings :
 
@@ -83,26 +82,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 Building again shouldn't be necessary after this,
 unless you modified `package.json` or `Dockerfile`.
 
-#### Migrations
-
-```sh
-# First, build the project
-docker-compose exec backend npm run build
-```
-
-```sh
-# Creates an empty migration
-docker-compose exec backend npm migration:create --name=MyNewMigration
-
-# Generates a new migration reflecting the difference between the database and the Entities definitions
-docker-compose exec backend npm migration:generate --name=MyNewMigration
-
-# Run/revert migrations
-docker-compose exec backend npm migration:run
-docker-compose exec backend npm migration:revert
-```
-
-### Production
+### Production (deprecated, to update)
 
 Create a file named `docker-compose.prod.yml` file to override basic settings :
 
@@ -137,3 +117,12 @@ services:
 ```sh
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
 ```
+
+## Changelog
+
+### 2023/07/24
+
+Switch to [Sveltekit](https://kit.svelte.dev/), with:
+- [Skeleton](https://www.skeleton.dev) for frontend UI
+- [Drizzle](https://orm.drizzle.team) for database interactions
+- [Zod](https://zod.dev/) (+[drizzl-zod](https://orm.drizzle.team/docs/zod)) for data validation
