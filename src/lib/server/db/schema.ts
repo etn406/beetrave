@@ -140,9 +140,9 @@ export const playlist_tracks = pgTable("playlist_tracks", {
   track_id: integer("track_id").notNull().references(() => track.id, { onDelete: "cascade" }),
   track_position: integer("track_position").notNull()
 },
-  (table) => {
-    return {
-      pk: primaryKey({ columns: [table.playlist_id, table.track_id, table.track_position] }),
-      unique_track_position_per_playlist: unique('unique_track_position_per_playlist').on(table.playlist_id, table.track_position)
-    }
-  });
+(table) => {
+  return {
+    pk: primaryKey({ columns: [table.playlist_id, table.track_id, table.track_position] }),
+    unique_track_position_per_playlist: unique('unique_track_position_per_playlist').on(table.playlist_id, table.track_position)
+  }
+});

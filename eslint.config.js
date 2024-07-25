@@ -13,7 +13,7 @@ export default [
   // prettier,
   // ...svelte.configs['flat/prettier'],
   {
-    files: ['**/*.js', '**/*.ts'],
+    files: ['**/*.js', '**/*.ts', '**/*.svelte'],
 
     plugins: {
       '@stylistic': stylistic
@@ -24,20 +24,13 @@ export default [
         ...globals.browser,
         ...globals.node
       },
-      parser: ts.parser,
+      parserOptions: {
+        parser: ts.parser
+      }
     },
     rules: {
       '@stylistic/indent': ['error', 2],
     },
-  },
-  {
-    files: ['**/*.svelte'],
-
-    languageOptions: {
-      parserOptions: {
-        parser: ts.parser
-      }
-    }
   },
   {
     ignores: ['build/', '.svelte-kit/', 'dist/']
