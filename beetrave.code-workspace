@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "eslint.workingDirectories": [
+      "./app"
+    ],
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "files.autoSave": "onFocusChange",
+    "files.associations": {
+      "*.css": "tailwindcss"
+    },
+    "[typescript,javascript]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[svelte]": {
+      "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+  }
+}

@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      target: development
+    volumes:
+      - ./app:/app
+      - /Volumes/docker/beets/beets-config:/volume1/docker/beets/beets-config
+      - /Volumes/data-1/music/library:/volume1/data/music/library
+    # command: sh /backend/docker-entrypoint.sh
+    env_file:
+      - ./app/.env
