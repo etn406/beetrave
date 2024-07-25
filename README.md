@@ -28,94 +28,51 @@ Main goals of this application:
 
 - [ ] Make tracks playable simply on the frontend (no playlist)
 
-## Installation
+## Development
 
 - Clone the repository:
 
 ```sh
-git clone https://github.com/etn406/beets-rave.git
-cd beets-rave
+git clone https://github.com/etn406/beetrave.git
+cd beetrave
 ```
 
-### Development (deprecated, to update)
-
-Create a file named `docker-compose.dev.yml` file to override basic settings :
+Create a file named `.env` file to specify environment variables. This file will be loaded by SvelteKit in a development environment only, and shouldn't be used in production.
 
 ```sh
-touch docker-compose.dev.yml
-```
-
-```yml
-services:
-  frontend:
-    build:
-      target: development
-    volumes:
-      - ./frontend:/app
-    command: npm run dev
-    environment:
-      NODE_ENV: development
-      BEETRAVE_FRONT_PORT: 3000
-      BEETRAVE_API_URL: http://localhost:3001/api
-
-  backend:
-    build:
-      target: development
-    volumes:
-      - ./backend:/app
-      - type: bind
-        source: ./library.db
-        target: /app/beets-library.db
-    environment:
-      NODE_ENV: development
-      BEET_LIBRARY_ROOT: /path/to/beet-library
-      BEET_LIBRARY_DB: /path/to/library.db
-```
-
-Build and run the project:
-
-```sh
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
-```
-
-Building again shouldn't be necessary after this,
-unless you modified `package.json` or `Dockerfile`.
-
-### Production (deprecated, to update)
-
-Create a file named `docker-compose.prod.yml` file to override basic settings :
-
-```sh
-touch docker-compose.prod.yml
-```
-
-```yml
-services:
-  frontend:
-    environment:
-      NODE_ENV: production
-      BEETRAVE_API_URL: https://<production.website>/api
-    build:
-      target: production
-
-  backend:
-    build:
-      target: production
-    environment:
-      NODE_ENV: development
-      BEET_LIBRARY_ROOT: /path/to/beet-library
-      BEET_LIBRARY_DB: /path/to/library.db
-      POSTGRES_DATABASE_HOST: db
-      POSTGRES_DATABASE_PORT: 5433
-      POSTGRES_DATABASE_USER: beetrave
-      POSTGRES_DATABASE_PASSWORD: beetrave
-      POSTGRES_DATABASE_NAME: beetrave
-      BACKEND_PORT: 3001
+touch .env
 ```
 
 ```sh
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+NODE_ENV=development
+BEETS_LIBRARY_ROOT=/data/music/library
+BEETS_LIBRARY_DB=/data/beets/beets-config/library.db
+POSTGRES_DATABASE_HOST=localhost
+POSTGRES_DATABASE_PORT=5433
+POSTGRES_DATABASE_USER=beetrave
+POSTGRES_DATABASE_PASSWORD=beetrave
+POSTGRES_DATABASE_NAME=beetrave
+```
+
+And then :
+
+```sh
+npm install
+
+# Run the database container 
+docker compose up --detach db
+
+# Setup the database
+npm run db:migrate
+
+# Start the development environment
+npm run dev
+```
+
+To stop the database:
+
+```sh
+docker compose down db
 ```
 
 ## Changelog

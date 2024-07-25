@@ -3,12 +3,25 @@ name: beetrave
 services:
   app:
     build:
-      context: ./app
+      context: .
       target: production
     ports:
       - "5173:5173"
     depends_on:
       - db
+    volumes:
+      - .:/app
+      - /local/path/to/beets-config:/container/path/to/beets-config
+      - /local/path/to/library-root:/container/path/to/library-root
+    environment:
+      - NODE_ENV=production
+      - BEETS_LIBRARY_ROOT=/container/path/to/library-root
+      - BEETS_LIBRARY_DB=/container/path/to/beets-config/library.db
+      - POSTGRES_DATABASE_HOST=localhost
+      - POSTGRES_DATABASE_PORT=5433
+      - POSTGRES_DATABASE_USER=beetrave
+      - POSTGRES_DATABASE_PASSWORD=beetrave
+      - POSTGRES_DATABASE_NAME=beetrave
 
   db:
     image: postgres:13
