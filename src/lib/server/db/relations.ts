@@ -1,29 +1,29 @@
 import { relations } from "drizzle-orm/relations";
-import { album, playlist, playlist_tracks, track } from "./schema";
+import { albumTable, playlistTable, playlistTracksTable, trackTable } from "./schema";
 
-export const trackRelations = relations(track, ({ one, many }) => ({
-  album: one(album, {
-    fields: [track.album_id],
-    references: [album.id]
+export const trackRelations = relations(trackTable, ({ one, many }) => ({
+  album: one(albumTable, {
+    fields: [trackTable.album_id],
+    references: [albumTable.id]
   }),
-  playlist_tracks: many(playlist_tracks),
+  playlist_tracks: many(playlistTracksTable),
 }));
 
-export const albumRelations = relations(album, ({ many }) => ({
-  beets_items: many(track),
+export const albumRelations = relations(albumTable, ({ many }) => ({
+  beets_items: many(trackTable),
 }));
 
-export const playlistTracksRelations = relations(playlist_tracks, ({ one }) => ({
-  playlist: one(playlist, {
-    fields: [playlist_tracks.playlist_id],
-    references: [playlist.id]
+export const playlistTracksRelations = relations(playlistTracksTable, ({ one }) => ({
+  playlist: one(playlistTable, {
+    fields: [playlistTracksTable.playlist_id],
+    references: [playlistTable.id]
   }),
-  beets_item: one(track, {
-    fields: [playlist_tracks.track_id],
-    references: [track.id]
+  beets_item: one(trackTable, {
+    fields: [playlistTracksTable.track_id],
+    references: [trackTable.id]
   }),
 }));
 
-export const playlistRelations = relations(playlist, ({ many }) => ({
-  playlist_tracks: many(playlist_tracks),
+export const playlistRelations = relations(playlistTable, ({ many }) => ({
+  playlist_tracks: many(playlistTracksTable),
 }));

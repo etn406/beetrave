@@ -1,7 +1,7 @@
 import { ScriptName } from "$lib/types/script";
 import { boolean, index, integer, pgEnum, pgTable, primaryKey, real, serial, text, timestamp, unique, varchar, type PgEnum } from "drizzle-orm/pg-core";
 
-export const album = pgTable("album", {
+export const albumTable = pgTable("album", {
   id: integer("id").primaryKey().notNull(),
   artpath: varchar("artpath"),
   added: real("added").notNull(),
@@ -42,10 +42,10 @@ export const album = pgTable("album", {
   deleted: boolean("deleted").default(false),
 });
 
-export const track = pgTable("track", {
+export const trackTable = pgTable("track", {
   path: varchar("path"),
   id: integer("id").primaryKey().notNull(),
-  album_id: integer("album_id").references(() => album.id),
+  album_id: integer("album_id").references(() => albumTable.id),
   year: integer("year").notNull(),
   month: integer("month").notNull(),
   day: integer("day").notNull(),
@@ -130,15 +130,15 @@ export const track = pgTable("track", {
 
 export const playlistTypeEnum = pgEnum("playlist_type_enum", ['default', 'syncthing'])
 
-export const playlist = pgTable("playlist", {
+export const playlistTable = pgTable("playlist", {
   id: serial("id").primaryKey().notNull(),
   name: varchar("name").notNull(),
   type: playlistTypeEnum("type").default('default').notNull(),
 });
 
-export const playlist_tracks = pgTable("playlist_tracks", {
-  playlist_id: integer("playlist_id").notNull().references(() => playlist.id, { onDelete: "cascade" }),
-  track_id: integer("track_id").notNull().references(() => track.id, { onDelete: "cascade" }),
+export const playlistTracksTable = pgTable("playlist_tracks", {
+  playlist_id: integer("playlist_id").notNull().references(() => playlistTable.id, { onDelete: "cascade" }),
+  track_id: integer("track_id").notNull().references(() => trackTable.id, { onDelete: "cascade" }),
   track_position: integer("track_position").notNull()
 },
 (table) => {
@@ -148,17 +148,17 @@ export const playlist_tracks = pgTable("playlist_tracks", {
   }
 });
 
-export const scriptName: PgEnum<[ScriptName]> = pgEnum("script_name", [ScriptName.BeetsImport])
+export const scriptNameEnum: PgEnum<[ScriptName]> = pgEnum("script_name", [ScriptName.BeetsImport])
 
-export const scriptSource = pgEnum("script_execution_source", ['cron', 'manual'])
+export const scriptSourceEnum = pgEnum("script_execution_source", ['cron', 'manual'])
 
-export const script = pgTable("scripts", {
+export const scriptTable = pgTable("scripts", {
   id: serial("id").primaryKey().notNull(),
-  name: scriptName("name").notNull(),
+  name: scriptNameEnum("name").notNull(),
   startTime: timestamp('startTime').notNull(),
   endTime: timestamp('endTime'),
   done: boolean('done').default(false).notNull(),
   success: boolean('success'),
   logs: text('logs'),
-  source: scriptSource('source').notNull(),
+  source: scriptSourceEnum('source').notNull(),
 });
