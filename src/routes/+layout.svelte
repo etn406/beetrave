@@ -9,7 +9,7 @@
     <aside class="min-w-64 overflow-y-scroll p-4">
       <nav class="list-nav grid grid-cols-[auto]">
         <a href="/">Home</a>
-        <a href="/importer">Importer</a>
+        <a href="/scripts">Scripts</a>
       </nav>
     </aside>
 
