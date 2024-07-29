@@ -1,0 +1,966 @@
+{
+  "id": "69b986f9-08d3-4002-842f-63dfecb2b9d7",
+  "prevId": "cb7507f9-a10a-4f51-af9e-f01ed06a220b",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.album": {
+      "name": "album",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "artpath": {
+          "name": "artpath",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "added": {
+          "name": "added",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumartist": {
+          "name": "albumartist",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumartist_sort": {
+          "name": "albumartist_sort",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumartist_credit": {
+          "name": "albumartist_credit",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "genre": {
+          "name": "genre",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "month": {
+          "name": "month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "day": {
+          "name": "day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "disctotal": {
+          "name": "disctotal",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "comp": {
+          "name": "comp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mb_albumid": {
+          "name": "mb_albumid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mb_albumartistid": {
+          "name": "mb_albumartistid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumtype": {
+          "name": "albumtype",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "label": {
+          "name": "label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mb_releasegroupid": {
+          "name": "mb_releasegroupid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "asin": {
+          "name": "asin",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "catalognum": {
+          "name": "catalognum",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "script": {
+          "name": "script",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "country": {
+          "name": "country",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumstatus": {
+          "name": "albumstatus",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumdisambig": {
+          "name": "albumdisambig",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "releasegroupdisambig": {
+          "name": "releasegroupdisambig",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rg_album_gain": {
+          "name": "rg_album_gain",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rg_album_peak": {
+          "name": "rg_album_peak",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "r128_album_gain": {
+          "name": "r128_album_gain",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "original_year": {
+          "name": "original_year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "original_month": {
+          "name": "original_month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "original_day": {
+          "name": "original_day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "style": {
+          "name": "style",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "discogs_albumid": {
+          "name": "discogs_albumid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "discogs_artistid": {
+          "name": "discogs_artistid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "discogs_labelid": {
+          "name": "discogs_labelid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "albumtypes": {
+          "name": "albumtypes",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted": {
+          "name": "deleted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.playlist": {
+      "name": "playlist",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "playlist_type_enum",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.playlist_tracks": {
+      "name": "playlist_tracks",
+      "schema": "",
+      "columns": {
+        "playlist_id": {
+          "name": "playlist_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "track_id": {
+          "name": "track_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "track_position": {
+          "name": "track_position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "playlist_tracks_playlist_id_playlist_id_fk": {
+          "name": "playlist_tracks_playlist_id_playlist_id_fk",
+          "tableFrom": "playlist_tracks",
+          "tableTo": "playlist",
+          "columnsFrom": [
+            "playlist_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "playlist_tracks_track_id_track_id_fk": {
+          "name": "playlist_tracks_track_id_track_id_fk",
+          "tableFrom": "playlist_tracks",
+          "tableTo": "track",
+          "columnsFrom": [
+            "track_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "playlist_tracks_playlist_id_track_id_track_position_pk": {
+          "name": "playlist_tracks_playlist_id_track_id_track_position_pk",
+          "columns": [
+            "playlist_id",
+            "track_id",
+            "track_position"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "unique_track_position_per_playlist": {
+          "name": "unique_track_position_per_playlist",
+          "nullsNotDistinct": false,
+          "columns": [
+            "playlist_id",
+            "track_position"
+          ]
+        }
+      }
+    },
+    "public.scripts": {
+      "name": "scripts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "script_name",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "startTime": {
+          "name": "startTime",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "endTime": {
+          "name": "endTime",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "done": {
+          "name": "done",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "success": {
+          "name": "success",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logs": {
+          "name": "logs",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source": {
+          "name": "source",
+          "type": "script_execution_source",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.track": {
+      "name": "track",
+      "schema": "",
+      "columns": {
+        "path": {
+          "name": "path",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "album_id": {
+          "name": "album_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "month": {
+          "name": "month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "day": {
+          "name": "day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "trackindex": {
+          "name": "trackindex",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tracktotal": {
+          "name": "tracktotal",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "disc": {
+          "name": "disc",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "disctotal": {
+          "name": "disctotal",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bpm": {
+          "name": "bpm",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "comp": {
+          "name": "comp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "r128_track_gain": {
+          "name": "r128_track_gain",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "r128_album_gain": {
+          "name": "r128_album_gain",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "original_year": {
+          "name": "original_year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "original_month": {
+          "name": "original_month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "original_day": {
+          "name": "original_day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bitrate": {
+          "name": "bitrate",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "samplerate": {
+          "name": "samplerate",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bitdepth": {
+          "name": "bitdepth",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "channels": {
+          "name": "channels",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "discogs_albumid": {
+          "name": "discogs_albumid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "discogs_artistid": {
+          "name": "discogs_artistid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "discogs_labelid": {
+          "name": "discogs_labelid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rg_track_gain": {
+          "name": "rg_track_gain",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rg_track_peak": {
+          "name": "rg_track_peak",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rg_album_gain": {
+          "name": "rg_album_gain",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rg_album_peak": {
+          "name": "rg_album_peak",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "length": {
+          "name": "length",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mtime": {
+          "name": "mtime",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "added": {
+          "name": "added",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "artist": {
+          "name": "artist",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "artist_sort": {
+          "name": "artist_sort",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "artist_credit": {
+          "name": "artist_credit",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumname": {
+          "name": "albumname",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumartist": {
+          "name": "albumartist",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumartist_sort": {
+          "name": "albumartist_sort",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumartist_credit": {
+          "name": "albumartist_credit",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "genre": {
+          "name": "genre",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lyricist": {
+          "name": "lyricist",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "composer": {
+          "name": "composer",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "composer_sort": {
+          "name": "composer_sort",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "arranger": {
+          "name": "arranger",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "grouping": {
+          "name": "grouping",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lyrics": {
+          "name": "lyrics",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "comments": {
+          "name": "comments",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mb_trackid": {
+          "name": "mb_trackid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mb_albumid": {
+          "name": "mb_albumid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mb_artistid": {
+          "name": "mb_artistid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mb_albumartistid": {
+          "name": "mb_albumartistid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mb_releasetrackid": {
+          "name": "mb_releasetrackid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "albumtype": {
+          "name": "albumtype",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "label": {
+          "name": "label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "acoustid_fingerprint": {
+          "name": "acoustid_fingerprint",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "acoustid_id": {
+          "name": "acoustid_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mb_releasegroupid": {
+          "name": "mb_releasegroupid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "asin": {
+          "name": "asin",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "catalognum": {
+          "name": "catalognum",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "script": {
+          "name": "script",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "country": {
+          "name": "country",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumstatus": {
+          "name": "albumstatus",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media": {
+          "name": "media",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "albumdisambig": {
+          "name": "albumdisambig",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "releasegroupdisambig": {
+          "name": "releasegroupdisambig",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "disctitle": {
+          "name": "disctitle",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "encoder": {
+          "name": "encoder",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "initial_key": {
+          "name": "initial_key",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "format": {
+          "name": "format",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "style": {
+          "name": "style",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "work": {
+          "name": "work",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mb_workid": {
+          "name": "mb_workid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "work_disambig": {
+          "name": "work_disambig",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trackdisambig": {
+          "name": "trackdisambig",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "albumtypes": {
+          "name": "albumtypes",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isrc": {
+          "name": "isrc",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted": {
+          "name": "deleted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {
+        "title_idx": {
+          "name": "title_idx",
+          "columns": [
+            {
+              "expression": "title",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "added_idx": {
+          "name": "added_idx",
+          "columns": [
+            {
+              "expression": "added",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "track_album_id_album_id_fk": {
+          "name": "track_album_id_album_id_fk",
+          "tableFrom": "track",
+          "tableTo": "album",
+          "columnsFrom": [
+            "album_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.playlist_type_enum": {
+      "name": "playlist_type_enum",
+      "schema": "public",
+      "values": [
+        "default",
+        "syncthing"
+      ]
+    },
+    "public.script_execution_source": {
+      "name": "script_execution_source",
+      "schema": "public",
+      "values": [
+        "cron",
+        "user"
+      ]
+    },
+    "public.script_name": {
+      "name": "script_name",
+      "schema": "public",
+      "values": [
+        "beets-import"
+      ]
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

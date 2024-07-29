@@ -8,6 +8,20 @@
       "when": 1721917378398,
       "tag": "0000_complete_malice",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1722176541765,
+      "tag": "0001_pretty_lord_tyger",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1722179833276,
+      "tag": "0002_supreme_vulture",
+      "breakpoints": true
     }
   ]
 }

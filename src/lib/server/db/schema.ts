@@ -1,6 +1,5 @@
-import { boolean, index, integer, pgEnum, pgTable, primaryKey, real, serial, unique, varchar } from "drizzle-orm/pg-core";
-
-export const playlistTypeEnum = pgEnum("playlist_type_enum", ['default', 'syncthing'])
+import { ScriptName } from "$lib/types/script";
+import { boolean, index, integer, pgEnum, pgTable, primaryKey, real, serial, text, timestamp, unique, varchar, type PgEnum } from "drizzle-orm/pg-core";
 
 export const album = pgTable("album", {
   id: integer("id").primaryKey().notNull(),
@@ -129,6 +128,8 @@ export const track = pgTable("track", {
   }
 });
 
+export const playlistTypeEnum = pgEnum("playlist_type_enum", ['default', 'syncthing'])
+
 export const playlist = pgTable("playlist", {
   id: serial("id").primaryKey().notNull(),
   name: varchar("name").notNull(),
@@ -145,4 +146,19 @@ export const playlist_tracks = pgTable("playlist_tracks", {
     pk: primaryKey({ columns: [table.playlist_id, table.track_id, table.track_position] }),
     unique_track_position_per_playlist: unique('unique_track_position_per_playlist').on(table.playlist_id, table.track_position)
   }
+});
+
+export const scriptName: PgEnum<[ScriptName]> = pgEnum("script_name", [ScriptName.BeetsImport])
+
+export const scriptSource = pgEnum("script_execution_source", ['cron', 'manual'])
+
+export const script = pgTable("scripts", {
+  id: serial("id").primaryKey().notNull(),
+  name: scriptName("name").notNull(),
+  startTime: timestamp('startTime').notNull(),
+  endTime: timestamp('endTime'),
+  done: boolean('done').default(false).notNull(),
+  success: boolean('success'),
+  logs: text('logs'),
+  source: scriptSource('source').notNull(),
 });
