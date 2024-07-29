@@ -5,11 +5,6 @@
     }
   ],
   "settings": {
-    "editor.formatOnType": false,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file",
-    "files.autoSave": "onFocusChange",
     "files.associations": {
       "*.css": "tailwindcss"
     },
@@ -19,5 +14,12 @@
     "[svelte]": {
       "editor.defaultFormatter": "svelte.svelte-vscode"
     },
+    "svelte.enable-ts-plugin": true,
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "svelte.svelte-vscode"
+    ]
   }
 }
