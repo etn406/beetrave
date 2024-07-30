@@ -9,6 +9,13 @@ import ts from 'typescript-eslint';
 export default [
   js.configs.recommended,
   ...ts.configs.recommended,
+  stylistic.configs.customize({
+    indent: 2,
+    quotes: 'single',
+    semi: true,
+    jsx: false,
+    // ...
+  }),
   ...svelte.configs['flat/recommended'],
   // prettier,
   // ...svelte.configs['flat/prettier'],
