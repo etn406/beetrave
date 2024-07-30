@@ -22,12 +22,12 @@ export abstract class Script {
   }
 
   protected async log(message: string): Promise<void> {
-    let header:string = `[${(new Date()).toISOString()}] [${this}]`
-    
+    let header: string = `[${(new Date()).toISOString()}] [${this}]`;
+
     if (this.dryRun) {
       header += ` [dry-run]`;
     }
-      
+
     message = `${header}\n${message}\n`;
 
     console.info(message);
@@ -42,12 +42,13 @@ export abstract class Script {
   }
 
   protected async logError(message: string, error?: unknown): Promise<void> {
-    let header:string = `[${(new Date()).toISOString()}] [${this}] [error]`
+    let header: string = `[${(new Date()).toISOString()}] [${this}] [error]`;
 
     if (error) {
       if (error instanceof Error) {
         message += `\n${error.message}`;
-      } else {
+      }
+      else {
         message += `\n${String(error)}`;
       }
     }
@@ -55,7 +56,7 @@ export abstract class Script {
     if (this.dryRun) {
       header += ` [dry-run]`;
     }
-    
+
     message = `${header}\n${message}\n`;
 
     console.error(message);
@@ -88,7 +89,9 @@ export abstract class Script {
       logs: '',
     }).returning({ id: scriptTable.id });
 
-    if (!id) { throw new Error(`Could not create script "${name}" in database!`); }
+    if (!id) {
+      throw new Error(`Could not create script "${name}" in database!`);
+    }
 
     return id;
   }
@@ -110,9 +113,9 @@ export abstract class Script {
 
     try {
       size = (await stat(filePath)).size;
-
-    } catch (_) {
-      await this.logError(`Coundl't read size of ${filePath}`)
+    }
+    catch (_) {
+      await this.logError(`Coundl't read size of ${filePath}`);
       size = 0;
     }
 
@@ -133,7 +136,8 @@ export abstract class Script {
     try {
       await unlink(path);
       await this.log(`File ${path} deleted successfully.`);
-    } catch (error) {
+    }
+    catch (error) {
       await this.logError(`Error deleting file ${path}`, error);
       throw error;
     }
@@ -144,8 +148,8 @@ export abstract class Script {
     try {
       child_process.spawnSync(binary, parameters);
       await this.log(`Binary "${binary}" found and working.`);
-
-    } catch (error) {
+    }
+    catch (error) {
       await this.logError(`Binary "${binary}" not found or not working.`, error);
       throw error;
     }
@@ -156,7 +160,8 @@ export abstract class Script {
       mkdirSync(env.BEETRAVE_TMP, { recursive: true });
       accessSync(env.BEETRAVE_TMP, constants.W_OK);
       await this.log(`Temporary directory "${env.BEETRAVE_TMP}" is accessible.`);
-    } catch (error) {
+    }
+    catch (error) {
       await this.logError(`Temporary directory "${env.BEETRAVE_TMP}" is not accessible.`, error);
       throw error;
     }
@@ -169,12 +174,12 @@ export abstract class Script {
 
     try {
       success = await this.internalRun();
-
-    } catch (e) {
+    }
+    catch (e) {
       console.error(`Uncatched error while running script "${name}" (id: ${this.id})`, e);
       success = false;
-
-    } finally {
+    }
+    finally {
       await db.update(scriptTable)
         .set({
           success,

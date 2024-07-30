@@ -34,15 +34,15 @@ export class BeetsImportScript extends Script {
     const result = child_process.spawnSync(
       'sqlite3',
       [env.BEETS_LIBRARY_DB],
-      { input: sqliteCommand }
+      { input: sqliteCommand },
     );
 
     if (result.status === 1) {
       const message = `Error exporting SQLite to CSV: ${result.stderr.toString()}`;
       await this.logError(message);
       throw new Error(message);
-
-    } else {
+    }
+    else {
       if (result.stdout.toString().length > 0) {
         await this.log(result.stdout.toString());
       }
@@ -53,7 +53,7 @@ export class BeetsImportScript extends Script {
 
   protected getPostgreSQLImportScript({ toTable: table, columnsMapping }: BeetsImporterTableConfig, csvFile: string): string {
     const columns: string[] = Object.values(columnsMapping).map(c => `"${c}"`);
-    const columnsJoined = columns.join(', ')
+    const columnsJoined = columns.join(', ');
 
     return [
       `\\set ON_ERROR_STOP on`,
@@ -86,14 +86,14 @@ export class BeetsImportScript extends Script {
   protected getPSQLParameters(): [string[], NodeJS.ProcessEnv] {
     return [
       [
-        "-U", env.POSTGRES_DATABASE_USER,
-        "-h", env.POSTGRES_DATABASE_HOST,
-        "-p", env.POSTGRES_DATABASE_PORT.toString(),
-        "-d", env.POSTGRES_DATABASE_NAME,
+        '-U', env.POSTGRES_DATABASE_USER,
+        '-h', env.POSTGRES_DATABASE_HOST,
+        '-p', env.POSTGRES_DATABASE_PORT.toString(),
+        '-d', env.POSTGRES_DATABASE_NAME,
       ],
       Object.assign(
         { PGPASSWORD: env.POSTGRES_DATABASE_PASSWORD },
-        process.env
+        process.env,
       ),
     ];
   }
@@ -105,9 +105,18 @@ export class BeetsImportScript extends Script {
     for (const line of stdout.toString().split('\n')) {
       if (line.startsWith('COPY ')) {
         copied = getNumberAfter(line, 'COPY ');
-      } else if (line.startsWith('UPDATE ')) {
-        if (updated === -1) { updated = getNumberAfter(line, 'UPDATE '); } else { deleted = getNumberAfter(line, 'UPDATE '); }
-      } else if (line.startsWith('INSERT ')) { inserted = getNumberAfter(line, 'INSERT '); }
+      }
+      else if (line.startsWith('UPDATE ')) {
+        if (updated === -1) {
+          updated = getNumberAfter(line, 'UPDATE ');
+        }
+        else {
+          deleted = getNumberAfter(line, 'UPDATE ');
+        }
+      }
+      else if (line.startsWith('INSERT ')) {
+        inserted = getNumberAfter(line, 'INSERT ');
+      }
     }
 
     return { copied, updated, inserted, deleted };
@@ -126,8 +135,8 @@ export class BeetsImportScript extends Script {
       const message = `Error importing CSV to PostgreSQL: ${psql.stderr.toString()}`;
       await this.logError(message);
       throw new Error(message);
-
-    } else {
+    }
+    else {
       const result = this.parseStatsFromStdout(psql.stdout);
 
       if (result.copied !== -1 && result.updated !== -1 && result.inserted !== -1 && result.deleted !== -1) {
@@ -137,8 +146,9 @@ export class BeetsImportScript extends Script {
           `- ${result.inserted} new entries inserted,`,
           `- ${result.deleted} entries marked as deleted`,
         ].join('\n'));
-      } else {
-        await this.log("Couldn't parse results from stout, so here it is fully instead:\n" + psql.stdout.toString());
+      }
+      else {
+        await this.log('Couldn\'t parse results from stout, so here it is fully instead:\n' + psql.stdout.toString());
       }
 
       await this.log(`✅ Imported ${config.toTable} from CSV ${csvFile} `);
@@ -149,7 +159,7 @@ export class BeetsImportScript extends Script {
 
   protected async importTableFromBeets(tableConfig: BeetsImporterTableConfig): Promise<BeetsImportResult> {
     const csvFile = this.getTempFilePath(
-      path.join(env.BEETRAVE_TMP, tableConfig.toTable + '.csv')
+      path.join(env.BEETRAVE_TMP, tableConfig.toTable + '.csv'),
     );
 
     try {
@@ -158,8 +168,8 @@ export class BeetsImportScript extends Script {
       await this.deleteFile(csvFile);
 
       return result;
-
-    } catch (e) {
+    }
+    catch (e) {
       await this.deleteFile(csvFile);
       throw e;
     }
@@ -169,7 +179,8 @@ export class BeetsImportScript extends Script {
     try {
       accessSync(env.BEETS_LIBRARY_DB, constants.R_OK);
       await this.log(`SQLite database "${env.BEETS_LIBRARY_DB}" is readable.`);
-    } catch (error) {
+    }
+    catch (error) {
       await this.logError(`SQLite database "${env.BEETS_LIBRARY_DB}" is not readable.`, error);
       throw error;
     }
@@ -189,15 +200,14 @@ export class BeetsImportScript extends Script {
     if (this.dryRun) {
       await this.log('Dry-run enabled, no changes will be made.');
       return true;
-
     }
 
     try {
       for (const tableConfig of beetsImporterConfig) {
         await this.importTableFromBeets(tableConfig);
       }
-
-    } catch (_e) {
+    }
+    catch (_e) {
       await this.logError('Error importing tables from Beets.');
       return false;
     }

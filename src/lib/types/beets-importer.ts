@@ -1,4 +1,3 @@
-
 export interface BeetsImporterTableConfig {
   id: string;
   fromTable: string;
@@ -16,6 +15,6 @@ export interface BeetsImportResult {
 
 /** Server-Side-Event Message */
 export interface BeetsImportLog {
-  name: 'log' | 'success' | 'error',
-  message: string,
+  name: 'log' | 'success' | 'error';
+  message: string;
 }

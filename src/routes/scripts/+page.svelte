@@ -16,7 +16,7 @@
   <ul>
     {#each data.scripts as script}
       <li>
-        {script.id}: 
+        {script.id}:
         {script.name} {script.done ? 'done' : 'running'}
       </li>
     {/each}

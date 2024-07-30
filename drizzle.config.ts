@@ -4,7 +4,7 @@ import { z } from 'zod';
 export default defineConfig({
   dialect: 'postgresql',
   schema: './src/lib/server/db/schema.ts',
-  out: "./drizzle",
+  out: './drizzle',
 
   dbCredentials: {
     host: z.string().parse(process.env.POSTGRES_DATABASE_HOST),

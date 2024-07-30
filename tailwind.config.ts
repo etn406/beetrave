@@ -10,17 +10,17 @@ const config = {
     './src/**/*.{html,js,svelte,ts}',
     join(
       require.resolve('@skeletonlabs/skeleton'),
-      '../**/*.{html,js,svelte,ts}'
-    )
+      '../**/*.{html,js,svelte,ts}',
+    ),
   ],
   theme: {
     extend: {},
   },
   plugins: [
     skeleton({
-      themes: { preset: ["vintage"] }
-    })
-  ]
+      themes: { preset: ['vintage'] },
+    }),
+  ],
 } satisfies Config;
 
 export default config;

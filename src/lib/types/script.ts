@@ -1,3 +1,3 @@
 export enum ScriptName {
-  BeetsImport = 'beets-import'
+  BeetsImport = 'beets-import',
 }
